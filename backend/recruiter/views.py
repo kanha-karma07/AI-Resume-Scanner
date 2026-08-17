@@ -16,7 +16,7 @@ from candidate.utils import extract_jd_skills, extract_text_from_pdf, clean_resu
 from .models import RecruiterUploadedResume, CandidateNote, RecruiterActivity, EmailLog
 from .serializers import RecruiterUploadedResumeSerializer, CandidateNoteSerializer, RecruiterActivitySerializer
 
-AI_ENGINE_URL = "http://localhost:8001"
+AI_ENGINE_URL = "https://ai-engine-135u.onrender.com"  # Replace with your actual AI engine URL
 
 class JobDescriptionAPIView(APIView):
     permission_classes = [IsAuthenticated]

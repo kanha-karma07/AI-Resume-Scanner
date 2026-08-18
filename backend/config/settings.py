@@ -173,10 +173,12 @@ MEDIA_ROOT = BASE_DIR / "media"
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://ai-resume-scanner-git-main-krishna-37b0.vercel.app",
+    "https://ai-resume-scanner-liart.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://ai-resume-scanner-git-main-krishna-37b0.vercel.app",
+    "https://ai-resume-scanner-liart.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True

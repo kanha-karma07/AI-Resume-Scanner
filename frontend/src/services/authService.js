@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000").replace(/\/api\/?$/, "");
+
 export const registerUser = async (data) => {
   return axios.post(
-    "http://127.0.0.1:8000/api/accounts/register/",
+    `${API_URL}/api/accounts/register/`,
     data,
     {
       headers: {
@@ -14,7 +16,7 @@ export const registerUser = async (data) => {
 
 export const registerRecruiter = async (data) => {
   return axios.post(
-    "http://127.0.0.1:8000/api/accounts/register/recruiter/",
+    `${API_URL}/api/accounts/register/recruiter/`,
     data,
     {
       headers: {
@@ -26,7 +28,7 @@ export const registerRecruiter = async (data) => {
 
 export const loginUser = async (data) => {
   return axios.post(
-    "http://127.0.0.1:8000/api/accounts/login/",
+    `${API_URL}/api/accounts/login/`,
     data,
     {
       headers: {
@@ -35,9 +37,9 @@ export const loginUser = async (data) => {
     }
   );
 };
+
 export const logoutUser = () => {
   localStorage.clear();
   sessionStorage.clear();
   window.location.href = '/';
 };
-

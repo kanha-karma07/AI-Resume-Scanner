@@ -10,7 +10,7 @@ class AIService:
 
     def build_resume(self, user_data):
         import requests
-        FASTAPI_URL = "http://127.0.0.1:8001/build-resume"
+        FASTAPI_URL = os.environ.get("AI_ENGINE_URL", "http://127.0.0.1:8001") + "/build-resume"
         try:
             response = requests.post(FASTAPI_URL, json={"user_data": user_data})
             if response.status_code == 200:
@@ -42,7 +42,7 @@ class AIService:
     def edit_resume(self, original_text, section, instruction):
         """Improves specific resume section based on instructions using FastAPI Engine."""
         import requests
-        FASTAPI_URL = "http://127.0.0.1:8001/edit-resume"
+        FASTAPI_URL = os.environ.get("AI_ENGINE_URL", "http://127.0.0.1:8001") + "/edit-resume"
         try:
             # Check if original_text is a string, and if so parse it to a dictionary
             import json

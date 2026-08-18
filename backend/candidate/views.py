@@ -1,4 +1,5 @@
 import json
+import os
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -459,7 +460,7 @@ class AIJobMatchAPIView(APIView):
             return Response({"error": "Resume text is empty. Please ensure the resume was parsed successfully."}, status=status.HTTP_400_BAD_REQUEST)
 
         # Send to AI Engine
-        FASTAPI_URL = "http://127.0.0.1:8001/analyze-job-match"
+        FASTAPI_URL = os.environ.get("AI_ENGINE_URL", "http://127.0.0.1:8001") + "/analyze-job-match"
         try:
             ai_response = requests.post(FASTAPI_URL, json={
                 "resume_text": resume_text,

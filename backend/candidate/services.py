@@ -1,9 +1,10 @@
 import requests
 import logging
+import os
 
 logger = logging.getLogger(__name__)
 
-FASTAPI_URL = "http://127.0.0.1:8001/parse-resume"
+FASTAPI_URL = os.environ.get("AI_ENGINE_URL", "http://127.0.0.1:8001") + "/parse-resume"
 
 def analyze_resume(file_path):
     logger.info(f"Preparing to send {file_path} to AI Engine.")

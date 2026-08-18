@@ -1,8 +1,11 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 
+const RAW_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+const API_URL = RAW_API_URL.endsWith('/api') || RAW_API_URL.endsWith('/api/') ? RAW_API_URL : `${RAW_API_URL.replace(/\/$/, '')}/api`;
+
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/",
+  baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -54,7 +57,7 @@ api.interceptors.response.use(
         
         if (refreshToken) {
           try {
-            const response = await axios.post("http://127.0.0.1:8000/api/accounts/token/refresh/", {
+            const response = await axios.post(`${API_URL.replace(/\/api\/?$/, "")}/api/accounts/token/refresh/`, {
               refresh: refreshToken
             });
             

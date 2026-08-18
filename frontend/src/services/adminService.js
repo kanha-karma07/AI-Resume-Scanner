@@ -1,10 +1,11 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/api/admin/";
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000").replace(/\/api\/?$/, "");
+const ADMIN_API_URL = `${API_URL}/api/admin/`;
 
 // Create Axios instance with Auth Header
 const adminApi = axios.create({
-  baseURL: API_URL,
+  baseURL: ADMIN_API_URL,
 });
 
 adminApi.interceptors.request.use(
